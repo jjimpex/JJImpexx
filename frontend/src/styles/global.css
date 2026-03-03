@@ -1,0 +1,39 @@
+/* ================= RESET ================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, Arial, sans-serif;
+  background: #fff7f5;
+  color: #1f1f1f;
+}
+
+/* ROOT */
+#root {
+  height: 100%;
+}
+
+/* ================= UTILITIES ================= */
+.container {
+  max-width: 1200px;
+  margin: auto;
+}

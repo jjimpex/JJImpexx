@@ -1,0 +1,99 @@
+/* ================= BRAND NETWORK ================= */
+.brand-network {
+  background: #ffffff;
+  padding: 48px 0 56px;
+  overflow: hidden;
+}
+
+.brand-network h2 {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 28px;
+  color: #222;
+}
+
+/* ================= MARQUEE ================= */
+.marquee {
+  display: flex;
+  width: max-content;
+  gap: 32px;
+
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+  gap: 32px;
+}
+
+/* ================= BRAND CIRCLE ================= */
+.brand-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+
+  background: #ffffff;
+  border: 1px solid #dd3838;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  overflow: hidden;
+
+  /* subtle depth */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* LOGO */
+.brand-logo {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+  display: block;
+
+  /* crisp on animation */
+  backface-visibility: hidden;
+}
+
+/* HOVER EFFECT */
+.brand-circle:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= ANIMATION ================= */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================= MOBILE TWEAK ================= */
+@media (max-width: 768px) {
+  .brand-circle {
+    width: 96px;
+    height: 96px;
+  }
+
+  .brand-network h2 {
+    font-size: 20px;
+  }
+
+  .marquee,
+  .marquee-group {
+    gap: 24px;
+  }
+}

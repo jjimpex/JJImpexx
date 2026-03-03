@@ -1,0 +1,93 @@
+.footer {
+  background: #1f1f1f;
+  color: #e0e0e0;
+  padding: 28px 16px 20px;
+}
+
+/* Sections */
+.footer-section {
+  border-bottom: 1px solid #333;
+  padding: 12px 0;
+}
+
+.footer-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.footer-toggle span {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Accordion content */
+.footer-content {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #cfcfcf;
+}
+
+.footer-content p {
+  margin-bottom: 6px;
+}
+
+/* WhatsApp button */
+.whatsapp-btn {
+  margin: 22px 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #25d366;
+  color: #0b3d1b;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+}
+
+/* Bottom */
+.footer-bottom {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 13px;
+  color: #9e9e9e;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .footer {
+    padding: 40px 60px 24px;
+  }
+
+  .footer-toggle {
+    font-size: 16px;
+  }
+
+  .footer-content {
+    font-size: 15px;
+  }
+
+  .whatsapp-btn {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

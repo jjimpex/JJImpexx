@@ -1,0 +1,23 @@
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+/* MAIN WRAPPER */
+.main-layout {
+  min-height: 100dvh;      /* 👈 full mobile viewport */
+  display: flex;
+  flex-direction: column;
+  background: #fff7f5;
+}
+
+/* PAGE AREA */
+.main-content {
+  flex: 1;                /* 👈 pushes footer to bottom */
+  display: flex;
+  flex-direction: column;
+}
