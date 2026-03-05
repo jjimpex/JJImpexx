@@ -91,75 +91,148 @@ export default function CategoryProducts() {
     setSearchParams({}, { replace: true });
   };
 
+  // return (
+  //   <section className="category-products-page">
+  //     {loading ? (
+  //       <div className="loading">Loading products…</div>
+  //     ) : (
+  //       <>
+  //         <h1 className="category-title">{category?.name}</h1>
+
+  //         {/* FILTER BAR */}
+  //         <div className="filter-bar">
+  //           <input
+  //             type="text"
+  //             placeholder="Search products"
+  //             value={searchInput}
+  //             onChange={(e) => setSearchInput(e.target.value)}
+  //           />
+
+  //           <select
+  //             value={brandFilter}
+  //             onChange={(e) => updateParam("brand", e.target.value)}
+  //           >
+  //             <option value="">All Brands</option>
+  //             {brands.map((b) => (
+  //               <option key={b._id} value={b._id}>
+  //                 {b.name}
+  //               </option>
+  //             ))}
+  //           </select>
+
+  //           <select
+  //             value={sort}
+  //             onChange={(e) => updateParam("sort", e.target.value)}
+  //           >
+  //             <option value="">Sort</option>
+  //             <option value="az">A → Z</option>
+  //             <option value="za">Z → A</option>
+  //           </select>
+
+  //           <button
+  //             className="reset-btn"
+  //             onClick={resetFilters}
+  //             title="Reset filters"
+  //           >
+  //             <FiRefreshCw size={18} />
+  //           </button>
+  //         </div>
+
+  //         {/* PRODUCTS */}
+  //         {products.length === 0 ? (
+  //           <p className="empty-text">No products found.</p>
+  //         ) : (
+  //           <div className="products-grid">
+  //             {products.map((product) => (
+  //               <div className="product-card" key={product._id}>
+  //                 <div className="product-image">
+  //                   <img src={product.images?.[0]} alt={product.name} />
+  //                 </div>
+
+  //                 <div className="product-info">
+  //                   <h3>{product.name}</h3>
+  //                   <span className="brand">{product.brand?.name}</span>
+  //                 </div>
+  //               </div>
+  //             ))}
+  //           </div>
+  //         )}
+  //       </>
+  //     )}
+  //   </section>
+  // );
+
   return (
-    <section className="category-products-page">
-      {loading ? (
-        <div className="loading">Loading products…</div>
-      ) : (
-        <>
-          <h1 className="category-title">{category?.name}</h1>
+  <section className="category-products-page">
+    {loading ? (
+      <div className="loading">
+        <span className="loader"></span>
+        <p>Please wait while we are loading products...</p>
+      </div>
+    ) : (
+      <>
+        <h1 className="category-title">{category?.name}</h1>
 
-          {/* FILTER BAR */}
-          <div className="filter-bar">
-            <input
-              type="text"
-              placeholder="Search products"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-            />
+        {/* FILTER BAR */}
+        <div className="filter-bar">
+          <input
+            type="text"
+            placeholder="Search products"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
 
-            <select
-              value={brandFilter}
-              onChange={(e) => updateParam("brand", e.target.value)}
-            >
-              <option value="">All Brands</option>
-              {brands.map((b) => (
-                <option key={b._id} value={b._id}>
-                  {b.name}
-                </option>
-              ))}
-            </select>
+          <select
+            value={brandFilter}
+            onChange={(e) => updateParam("brand", e.target.value)}
+          >
+            <option value="">All Brands</option>
+            {brands.map((b) => (
+              <option key={b._id} value={b._id}>
+                {b.name}
+              </option>
+            ))}
+          </select>
 
-            <select
-              value={sort}
-              onChange={(e) => updateParam("sort", e.target.value)}
-            >
-              <option value="">Sort</option>
-              <option value="az">A → Z</option>
-              <option value="za">Z → A</option>
-            </select>
+          <select
+            value={sort}
+            onChange={(e) => updateParam("sort", e.target.value)}
+          >
+            <option value="">Sort</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+          </select>
 
-            <button
-              className="reset-btn"
-              onClick={resetFilters}
-              title="Reset filters"
-            >
-              <FiRefreshCw size={18} />
-            </button>
-          </div>
+          <button
+            className="reset-btn"
+            onClick={resetFilters}
+            title="Reset filters"
+          >
+            <FiRefreshCw size={18} />
+          </button>
+        </div>
 
-          {/* PRODUCTS */}
-          {products.length === 0 ? (
-            <p className="empty-text">No products found.</p>
-          ) : (
-            <div className="products-grid">
-              {products.map((product) => (
-                <div className="product-card" key={product._id}>
-                  <div className="product-image">
-                    <img src={product.images?.[0]} alt={product.name} />
-                  </div>
-
-                  <div className="product-info">
-                    <h3>{product.name}</h3>
-                    <span className="brand">{product.brand?.name}</span>
-                    <span className="price">₹{product.price}</span>
-                  </div>
+        {/* PRODUCTS */}
+        {products.length === 0 ? (
+          <p className="empty-text">No products found.</p>
+        ) : (
+          <div className="products-grid">
+            {products.map((product) => (
+              <div className="product-card" key={product._id}>
+                <div className="product-image">
+                  <img src={product.images?.[0]} alt={product.name} />
                 </div>
-              ))}
-            </div>
-          )}
-        </>
-      )}
-    </section>
-  );
+
+                <div className="product-info">
+                  <h3>{product.name}</h3>
+                  <span className="brand">{product.brand?.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    )}
+  </section>
+);
 }

@@ -17,8 +17,12 @@ const brandSchema = new mongoose.Schema(
     },
 
     logo: {
-      type: String, // image path
+      type: String,
       required: true
+    },
+
+    logoPublicId: {
+      type: String
     },
 
     isActive: {
@@ -26,10 +30,7 @@ const brandSchema = new mongoose.Schema(
       default: true
     }
   },
-  {
-    timestamps: true
-  }
+  { timestamps: true }
 );
 
-const Brand = mongoose.model("Brand", brandSchema);
-export default Brand;
+export default mongoose.model("Brand", brandSchema);

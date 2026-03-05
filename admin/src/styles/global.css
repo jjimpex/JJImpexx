@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+
+/* FULL PAGE HEIGHT */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* ROOT LAYOUT */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* MAIN CONTENT */
+.main-container {
+  flex: 1;
+  padding: 20px;
+}
+
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* FOOTER */
+footer {
+  margin-top: auto;
+}
+
+/* LINKS */
+a {
+  text-decoration: none;
+  color: #2563eb;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+input,
+button {
+  font-family: inherit;
+}

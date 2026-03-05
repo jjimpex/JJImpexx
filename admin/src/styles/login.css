@@ -1,0 +1,97 @@
+/* LOGIN PAGE WRAPPER */
+
+.login-page{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+  background:#f3f4f6;
+}
+
+
+/* LOGIN CARD */
+
+.login-card{
+  width:360px;
+  background:#ffffff;
+  padding:35px;
+  border-radius:10px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.08);
+}
+
+
+/* TITLE */
+
+.login-card h2{
+  text-align:center;
+  margin-bottom:25px;
+  font-size:22px;
+  font-weight:600;
+}
+
+
+/* INPUT */
+
+.login-input{
+  width:100%;
+  padding:11px 12px;
+  border-radius:6px;
+  border:1px solid #d1d5db;
+  font-size:14px;
+  margin-bottom:16px;
+}
+
+.login-input:focus{
+  outline:none;
+  border-color:#2563eb;
+  box-shadow:0 0 0 2px rgba(37,99,235,0.15);
+}
+
+
+/* PASSWORD FIELD */
+
+.password-field{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input{
+  padding-right: 40px;
+}
+
+.toggle-password{
+  position: absolute;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password:hover{
+  color:#111827;
+}
+
+
+/* LOGIN BUTTON */
+
+.login-btn{
+  width:100%;
+  padding:11px;
+  border:none;
+  border-radius:6px;
+  background:#2563eb;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  margin-top:5px;
+  transition:0.2s;
+}
+
+.login-btn:hover{
+  background:#1d4ed8;
+}

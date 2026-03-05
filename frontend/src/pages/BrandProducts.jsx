@@ -1,32 +1,34 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import api from "../services/api";
 import "../styles/brandProducts.css";
 
-export default function BrandProducts() {
-  const { slug } = useParams();
-  const [products, setProducts] = useState([]);
-  const [brand, setBrand] = useState(null);
+export default function ShopByCategory() {
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    api.get(`/brands/${slug}`).then(res => {
-      setBrand(res.data.brand);
-      setProducts(res.data.products);
-    });
-  }, [slug]);
+    api.get("/categories").then(res => setCategories(res.data));
+  }, []);
 
   return (
-    <div className="brand-products">
-      <h1>{brand?.name}</h1>
+    <section className="shop-category">
+      <h3>Shop by category</h3>
 
-      <div className="products-grid">
-        {products.map(p => (
-          <div className="product-card" key={p._id}>
-            <img src={p.image} alt={p.name} />
-            <h3>{p.name}</h3>
-          </div>
+      <div className="category-grid">
+        {categories.map(cat => (
+          <Link
+            to={`/category/${cat.slug}`}
+            className="category-card"
+            key={cat._id}
+          >
+            <div
+              className="cat-icon"
+              style={{ backgroundImage: `url(${cat.icon})` }}
+            />
+            <span>{cat.name}</span>
+          </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

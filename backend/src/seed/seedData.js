@@ -263,7 +263,15 @@ const seedProducts = async () => {
       price: 820,
       description: "Citrus flavored blue syrup",
       images: ["/assets/products/blue-curacao.png"]
-    }
+    },
+    {
+  name: "Refined Sunflower Oil – Bulk Pack",
+  slug: "refined-sunflower-oil-bulk",
+  category: categories.oils._id,
+  price: 185,
+  description: "High-quality refined sunflower oil suitable for commercial kitchens and bulk buyers",
+  images: ["/assets/products/sunflower-oil.png"]
+}
   ];
 
   for (const product of products) {
