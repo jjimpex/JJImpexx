@@ -9,6 +9,8 @@ const AccordionSection = ({ id, title, active, toggleSection, children }) => {
   const contentRef = useRef(null);
   const [height, setHeight] = useState("0px");
   const location = useLocation();
+  const message = "Hello JJImpex, I would like to enquire about your products.";
+  const whatsappLink = `https://wa.me/918826411312?text=${encodeURIComponent(message)}`;
 
   useEffect(() => {
     if (active === id) {
@@ -47,7 +49,6 @@ export default function Footer() {
   return (
     <footer id="footer" className="footer">
       <div className="footer-container">
-
         {/* CONTACT INFO */}
         <AccordionSection
           id="contact"
@@ -55,11 +56,15 @@ export default function Footer() {
           active={active}
           toggleSection={toggleSection}
         >
-          <p><b>Phone:</b> +91-9876543210</p>
-          <p><b>Email:</b> sales@jjimpex.com</p>
           <p>
-            <b>Address:</b> JJ Impex, B-74 Basement, Suraj Park,
-            Village Samaipur, Delhi
+            <b>Phone:</b> +91-9876543210
+          </p>
+          <p>
+            <b>Email:</b> sales@jjimpex.com
+          </p>
+          <p>
+            <b>Address:</b> JJ Impex, B-74 Basement, Suraj Park, Village
+            Samaipur, Delhi
           </p>
 
           <div className="footer-map">
@@ -119,29 +124,27 @@ export default function Footer() {
         </AccordionSection>
 
         {/* FAQ */}
-        {/* FAQ */}
-<AccordionSection
-  id="faq"
-  title="FAQ"
-  active={active}
-  toggleSection={toggleSection}
->
-  <Link
-    to="/faq"
-    onClick={() => {
-      setActive(null);        // close accordion
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }}
-    className="faq-link"
-  >
-    View Frequently Asked Questions →
-  </Link>
-</AccordionSection>
+        <AccordionSection
+          id="faq"
+          title="FAQ"
+          active={active}
+          toggleSection={toggleSection}
+        >
+          <Link
+            to="/faq"
+            onClick={() => {
+              setActive(null); // close accordion
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="faq-link"
+          >
+            View Frequently Asked Questions →
+          </Link>
+        </AccordionSection>
 
         {/* ACTION BUTTONS */}
         <div className="footer-actions">
           <div className="footer-buttons">
-
             <button
               className="contact-btn"
               onClick={() => setShowContact(true)}
@@ -155,11 +158,10 @@ export default function Footer() {
             >
               Feedback
             </button>
-
           </div>
 
           <a
-            href="https://wa.me/918826411312"
+            href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className="whatsapp-btn"
@@ -170,9 +172,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footer-bottom">
-        © 2026 JJImpex. All rights reserved.
-      </div>
+      <div className="footer-bottom">© 2026 JJImpex. All rights reserved.</div>
 
       {showContact && <InquiryForm close={() => setShowContact(false)} />}
       {showFeedback && <FeedbackForm close={() => setShowFeedback(false)} />}
