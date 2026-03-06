@@ -5,12 +5,13 @@ import FeedbackForm from "../FeedbackForm";
 import { FaWhatsapp, FaPlus, FaMinus } from "react-icons/fa";
 import "../../styles/footer.css";
 
+const message = "Hello JJImpex, I would like to enquire about your products.";
+const whatsappLink = `https://wa.me/918826411312?text=${encodeURIComponent(message)}`;
+
 const AccordionSection = ({ id, title, active, toggleSection, children }) => {
   const contentRef = useRef(null);
   const [height, setHeight] = useState("0px");
   const location = useLocation();
-  const message = "Hello JJImpex, I would like to enquire about your products.";
-  const whatsappLink = `https://wa.me/918826411312?text=${encodeURIComponent(message)}`;
 
   useEffect(() => {
     if (active === id) {
