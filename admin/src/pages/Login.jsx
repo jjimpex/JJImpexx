@@ -2,82 +2,65 @@ import { useState, useEffect } from "react";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Loader from "../components/Loader";
 import "../styles/login.css";
 
 export default function Login() {
-
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   /* REDIRECT IF ALREADY LOGGED IN */
   useEffect(() => {
     const loggedIn = localStorage.getItem("adminLoggedIn");
-
     if (loggedIn) {
       navigate("/dashboard");
     }
   }, [navigate]);
 
-  // const submit = async () => {
-
+  //   const submit = async () => {
   //   try {
-
   //     const res = await api.post("/admin/login", { id, password });
-
   //     if (res.data.success) {
-
+  //       /* SAVE TOKEN */
+  //       localStorage.setItem("adminToken", res.data.token);
   //       /* SAVE LOGIN STATE */
   //       localStorage.setItem("adminLoggedIn", "true");
-
   //       navigate("/dashboard", { replace: true });
-
   //     }
-
   //   } catch {
-
   //     alert("Invalid credentials");
-
   //   }
-
   // };
 
   const submit = async () => {
+    try {
+      setLoading(true);
 
-  try {
+      const res = await api.post("/admin/login", { id, password });
 
-    const res = await api.post("/admin/login", { id, password });
+      if (res.data.success) {
+        localStorage.setItem("adminToken", res.data.token);
+        localStorage.setItem("adminLoggedIn", "true");
 
-    if (res.data.success) {
-
-      /* SAVE TOKEN */
-      localStorage.setItem("adminToken", res.data.token);
-
-      /* SAVE LOGIN STATE */
-      localStorage.setItem("adminLoggedIn", "true");
-
-      navigate("/dashboard", { replace: true });
-
+        navigate("/dashboard", { replace: true });
+      }
+    } catch {
+      alert("Invalid credentials");
+    } finally {
+      setLoading(false);
     }
-
-  } catch {
-
-    alert("Invalid credentials");
-
+  };
+  if (loading) {
+    return <Loader text="Please wait while we are logging you in..." />;
   }
-
-};
-
   return (
-
     <div className="login-page">
-
       <div className="login-card">
-
         <h2>Admin Login</h2>
-
         <input
           className="login-input"
           placeholder="Admin ID"
@@ -86,7 +69,6 @@ export default function Login() {
         />
 
         <div className="password-field">
-
           <input
             className="login-input"
             type={showPassword ? "text" : "password"}
@@ -101,18 +83,12 @@ export default function Login() {
           >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
-
         </div>
 
-        <button
-          className="login-btn"
-          onClick={submit}
-        >
-          Login
+        <button className="login-btn" onClick={submit}>
+          Login 
         </button>
-
       </div>
-
     </div>
   );
 }
