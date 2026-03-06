@@ -25,6 +25,8 @@ body {
 
 /* MAIN CONTENT */
 .main-container {
+  background: #fff7ed;
+
   flex: 1;
   padding: 20px;
 }

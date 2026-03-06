@@ -1,0 +1,208 @@
+/* PAGE */
+
+.dashboard-page {
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ===================== */
+/* STATS GRID */
+/* ===================== */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* CARD */
+
+.stats-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #ffdeb5;
+  padding: 26px;
+  border-radius: 14px;
+  border: 2px solid #ffa575;
+  text-decoration: none;
+  color: #222;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+/* ICON */
+.stats-icon {
+  font-size: 26px;
+  color: #ea580c;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+/* NUMBER */
+
+.stats-card h3 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* LABEL */
+
+.stats-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* HOVER */
+
+.stats-card:hover {
+  transform: translateY(-5px);
+  border-color: #ea580c;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ===================== */
+/* RECENT PRODUCTS */
+/* ===================== */
+
+.recent-products {
+  background: #ffdeb5;
+  color: #ea580c;
+  border-radius: 14px;
+  border: 2px solid #ffa575;
+  padding: 26px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.recent-products:hover {
+  transform: translateY(-5px);
+  border-color: #ea580c;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* HEADER */
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.section-header h2 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.view-all {
+  text-decoration: none;
+  font-size: 14px;
+  color: #ea580c;
+  font-weight: 500;
+}
+
+.view-all:hover {
+  font-size: 15px;
+}
+
+/* ===================== */
+/* TABLE */
+/* ===================== */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.products-table th {
+  text-align: left;
+  padding: 14px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 2px solid #f1f5f9;
+  color: black;
+}
+
+.products-table td {
+  padding: 14px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+}
+
+/* PRODUCT CELL */
+
+.product-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* IMAGE */
+
+.product-thumb {
+  width: 34px;
+  height: 34px;
+
+  object-fit: cover;
+
+  border-radius: 6px;
+}
+
+/* HOVER ROW */
+
+.products-table tbody tr:hover {
+  background: #fff7ed;
+}
+
+/* EMPTY */
+
+.empty-row {
+  text-align: center;
+  padding: 25px;
+  color: black;
+  font-weight: 500;
+}
+
+/* ===================== */
+/* MOBILE */
+/* ===================== */
+
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding: 20px;
+  }
+
+  .stats-card {
+    padding: 20px;
+  }
+
+  .stats-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .stats-card h3 {
+    font-size: 26px;
+  }
+
+  .recent-products {
+    padding: 18px;
+  }
+}

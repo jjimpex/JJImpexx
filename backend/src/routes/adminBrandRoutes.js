@@ -1,22 +1,3 @@
-// import express from "express";
-// import {
-//   getBrands,
-//   createBrand,
-//   updateBrand,
-//   deleteBrand
-// } from "../controllers/adminBrandController.js";
-
-// const router = express.Router();
-
-// // ❌ REMOVE any auth middleware here
-
-// router.get("/", getBrands);
-// router.post("/", createBrand);
-// router.put("/:id", updateBrand);
-// router.delete("/:id", deleteBrand);
-
-// export default router;
-
 import express from "express";
 import {
   getBrands,
@@ -25,16 +6,23 @@ import {
   deleteBrand
 } from "../controllers/adminBrandController.js";
 
-import upload from "../../middleware/uploadMiddleware.js";
+import uploadBrands from "../../middleware/uploadMiddleware.js";
+import { adminAuth } from "../../middleware/adminAuthMiddleware.js";
+
+// const router = express.Router();
 
 const router = express.Router();
 
+router.use(adminAuth);
+
+
 router.get("/", getBrands);
 
-router.post("/", upload.single("logo"), createBrand);
+router.post("/", uploadBrands.single("logo"), createBrand);
 
-router.put("/:id", upload.single("logo"), updateBrand);
+router.put("/:id", uploadBrands.single("logo"), updateBrand);
 
 router.delete("/:id", deleteBrand);
 
 export default router;
+

@@ -9,6 +9,7 @@ import adminBrandRoutes from "./routes/adminBrandRoutes.js";
 import adminCategoryRoutes from "./routes/adminCategoryRoutes.js";
 import adminProductRoutes from "./routes/adminProductRoutes.js";
 import adminAuthRoutes from "./routes/adminAuthRoutes.js";
+import adminDashboardRoutes from "./routes/adminDashboardRoutes.js";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use("/api/admin", adminAuthRoutes);
 app.use("/api/admin/brands", adminBrandRoutes);
 app.use("/api/admin/categories", adminCategoryRoutes);
 app.use("/api/admin/products", adminProductRoutes);
+app.use("/api/admin", adminDashboardRoutes);
 
 app.listen(PORT, () => {
   console.log(`✅ JJImpex server running on port ${PORT}`);

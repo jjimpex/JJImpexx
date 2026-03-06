@@ -3,52 +3,72 @@
 // import Dashboard from "./pages/Dashboard";
 // import Brands from "./pages/Brands";
 // import Categories from "./pages/Categories";
-// import MainLayout from "../src/components/Layout";
+// import Products from "./pages/Products";
+
+// import MainLayout from "./components/Layout";
+// import ProtectedRoute from "./components/ProtectedRoute";
+
 // import "./styles/global.css";
 
 // export default function App() {
 //   return (
 //     <Routes>
 
-//       {/* Pages with header + footer */}
-//       <Route element={<MainLayout />}>
+//       {/* PUBLIC ROUTE */}
+//       <Route path="/login" element={<Login />} />
 
+//       {/* PROTECTED ROUTES */}
+//       <Route
+//         element={
+//           <ProtectedRoute>
+//             <MainLayout />
+//           </ProtectedRoute>
+//         }
+//       >
 //         <Route path="/dashboard" element={<Dashboard />} />
 //         <Route path="/brands" element={<Brands />} />
 //         <Route path="/categories" element={<Categories />} />
+//         <Route path="/products" element={<Products />} />
+//       </Route>
 
-      
-
-//       {/* Login page without header/footer */}
-//       <Route path="/login" element={<Login />} />
-
+//       {/* DEFAULT REDIRECT */}
 //       <Route path="*" element={<Navigate to="/login" />} />
-// </Route>
+
 //     </Routes>
 //   );
 // }
 
 import { Routes, Route, Navigate } from "react-router-dom";
+
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Brands from "./pages/Brands";
 import Categories from "./pages/Categories";
-import MainLayout from "./components/Layout";
-import "./styles/global.css";
 import Products from "./pages/Products";
+
+import MainLayout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import "./styles/global.css";
 
 export default function App() {
   return (
     <Routes>
-      <Route element={<MainLayout />}>
+
+      {/* PUBLIC */}
       <Route path="/login" element={<Login />} />
+
+      {/* PROTECTED LAYOUT */}
+      <Route element={<ProtectedRoute><MainLayout /></ProtectedRoute>}>
+
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/brands" element={<Brands />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/products" element={<Products />} />
+
       </Route>
 
-      {/* Default redirect */}
+      {/* DEFAULT */}
       <Route path="*" element={<Navigate to="/login" />} />
 
     </Routes>

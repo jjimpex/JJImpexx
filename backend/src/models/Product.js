@@ -1,60 +1,3 @@
-// import mongoose from "mongoose";
-
-// const productSchema = new mongoose.Schema(
-//   {
-//     name: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-
-//     slug: {
-//       type: String,
-//       required: true,
-//       lowercase: true,
-//       unique: true,
-//     },
-
-//     brand: {
-//       type: mongoose.Schema.Types.ObjectId,
-//       ref: "Brand",
-//       default: null,
-//     },
-
-//     category: {
-//       type: mongoose.Schema.Types.ObjectId,
-//       ref: "Category",
-//       required: true,
-//     },
-
-//     price: {
-//       type: Number,
-//       required: true,
-//     },
-
-//     description: {
-//       type: String,
-//     },
-
-//     images: [
-//       {
-//         type: String, // image paths
-//       },
-//     ],
-
-//     isActive: {
-//       type: Boolean,
-//       default: true,
-//     },
-//   },
-//   {
-//     timestamps: true,
-//   },
-// );
-
-// const Product = mongoose.model("Product", productSchema);
-// export default Product;
-
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
@@ -67,8 +10,7 @@ const productSchema = new mongoose.Schema(
 
   slug: {
     type: String,
-    lowercase: true,
-    unique: true
+    lowercase: true
   },
 
   brand: {
@@ -96,6 +38,15 @@ const productSchema = new mongoose.Schema(
   }
 },
 { timestamps: true }
+);
+
+
+productSchema.index(
+  { slug: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { isActive: true }
+  }
 );
 
 export default mongoose.model("Product", productSchema);

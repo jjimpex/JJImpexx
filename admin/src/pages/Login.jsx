@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -12,6 +12,15 @@ export default function Login() {
 
   const navigate = useNavigate();
 
+  /* REDIRECT IF ALREADY LOGGED IN */
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("adminLoggedIn");
+
+    if (loggedIn) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
+
   const submit = async () => {
 
     try {
@@ -20,6 +29,7 @@ export default function Login() {
 
       if (res.data.success) {
 
+        /* SAVE LOGIN STATE */
         localStorage.setItem("adminLoggedIn", "true");
 
         navigate("/dashboard", { replace: true });
@@ -78,6 +88,5 @@ export default function Login() {
       </div>
 
     </div>
-
   );
 }

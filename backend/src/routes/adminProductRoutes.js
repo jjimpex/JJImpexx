@@ -47,7 +47,13 @@ import {
 
 import uploadProducts from "../../middleware/uploadProducts.js";
 
+import { adminAuth } from "../../middleware/adminAuthMiddleware.js";
+
+// const router = express.Router();
+
 const router = express.Router();
+
+router.use(adminAuth);
 
 router.get("/", getProducts);
 
