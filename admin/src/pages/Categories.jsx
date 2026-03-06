@@ -228,12 +228,12 @@ export default function Category() {
         <div className="brand-header">
           <span>S.No</span>
           <span>Category</span>
-          <span>Icon</span>
+          <span>Logo</span>
           <span>Edit</span>
           <span>Delete</span>
         </div>
 
-        {paginated.map((c, index) => (
+        {/* {paginated.map((c, index) => (
 
           <div className="brand-card" key={c._id}>
 
@@ -265,7 +265,59 @@ export default function Category() {
 
           </div>
 
-        ))}
+        ))} */}
+
+        {paginated.length === 0 ? (
+
+  <div
+    style={{
+      textAlign: "center",
+      padding: "25px",
+      color: "#777",
+      fontSize: "15px",
+      gridColumn: "1 / -1"
+    }}
+  >
+    No records found...
+  </div>
+
+) : (
+
+  paginated.map((c, index) => (
+
+    <div className="brand-card" key={c._id}>
+
+      <div className="brand-serial">
+        {(page - 1) * ITEMS_PER_PAGE + index + 1}
+      </div>
+
+      <div className="brand-name">
+        {c.name}
+      </div>
+
+      <div className="brand-logo-box">
+        <img src={c.icon} alt={c.name} />
+      </div>
+
+      <button
+        className="icon-btn edit-btn"
+        onClick={() => openEdit(c)}
+      >
+        <FaEdit />
+      </button>
+
+      <button
+        className="icon-btn delete-btn"
+        onClick={() => setDeleteId(c._id)}
+      >
+        <FaTrash />
+      </button>
+
+    </div>
+
+  ))
+
+)}
 
       </div>
 

@@ -294,12 +294,12 @@ export default function Products() {
             <span>Name</span>
             <span>Brand</span>
             <span>Category</span>
-            <span>Images</span>
+            <span>Logo</span>
             <span>Edit</span>
             <span>Delete</span>
           </div>
 
-          {paginatedProducts.map((p)=>(
+          {/* {paginatedProducts.map((p)=>(
 
             <div className="product-card" key={p._id}>
 
@@ -333,7 +333,59 @@ export default function Products() {
 
             </div>
 
-          ))}
+          ))} */}
+
+          {paginatedProducts.length === 0 ? (
+
+  <div
+    style={{
+      textAlign: "center",
+      padding: "25px",
+      color: "#777",
+      fontSize: "15px",
+      gridColumn: "1 / -1"
+    }}
+  >
+    No records found...
+  </div>
+
+) : (
+
+  paginatedProducts.map((p) => (
+
+    <div className="product-card" key={p._id}>
+
+      <div>{p.name}</div>
+
+      <div>{p.brand?.name || "-"}</div>
+
+      <div>{p.category?.name}</div>
+
+      <div className="product-images">
+        {p.images?.map((img,i)=>(
+          <img key={i} src={img.url} alt=""/>
+        ))}
+      </div>
+
+      <button
+        className="icon-btn edit-btn"
+        onClick={()=>openEdit(p)}
+      >
+        <FaEdit/>
+      </button>
+
+      <button
+        className="icon-btn delete-btn"
+        onClick={()=>setDeleteId(p._id)}
+      >
+        <FaTrash/>
+      </button>
+
+    </div>
+
+  ))
+
+)}
 
         </div>
 
