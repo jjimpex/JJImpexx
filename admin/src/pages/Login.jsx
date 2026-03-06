@@ -21,28 +21,54 @@ export default function Login() {
     }
   }, [navigate]);
 
+  // const submit = async () => {
+
+  //   try {
+
+  //     const res = await api.post("/admin/login", { id, password });
+
+  //     if (res.data.success) {
+
+  //       /* SAVE LOGIN STATE */
+  //       localStorage.setItem("adminLoggedIn", "true");
+
+  //       navigate("/dashboard", { replace: true });
+
+  //     }
+
+  //   } catch {
+
+  //     alert("Invalid credentials");
+
+  //   }
+
+  // };
+
   const submit = async () => {
 
-    try {
+  try {
 
-      const res = await api.post("/admin/login", { id, password });
+    const res = await api.post("/admin/login", { id, password });
 
-      if (res.data.success) {
+    if (res.data.success) {
 
-        /* SAVE LOGIN STATE */
-        localStorage.setItem("adminLoggedIn", "true");
+      /* SAVE TOKEN */
+      localStorage.setItem("adminToken", res.data.token);
 
-        navigate("/dashboard", { replace: true });
+      /* SAVE LOGIN STATE */
+      localStorage.setItem("adminLoggedIn", "true");
 
-      }
-
-    } catch {
-
-      alert("Invalid credentials");
+      navigate("/dashboard", { replace: true });
 
     }
 
-  };
+  } catch {
+
+    alert("Invalid credentials");
+
+  }
+
+};
 
   return (
 
