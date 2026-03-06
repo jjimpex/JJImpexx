@@ -1,70 +1,181 @@
-import { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import InquiryForm from "../InquiryForm";
+import FeedbackForm from "../FeedbackForm";
+import { FaWhatsapp, FaPlus, FaMinus } from "react-icons/fa";
 import "../../styles/footer.css";
 
-export default function Footer() {
-  const [open, setOpen] = useState(null);
+const AccordionSection = ({ id, title, active, toggleSection, children }) => {
+  const contentRef = useRef(null);
+  const [height, setHeight] = useState("0px");
+  const location = useLocation();
 
-  const toggle = (section) => {
-    setOpen(open === section ? null : section);
+  useEffect(() => {
+    if (active === id) {
+      setHeight(contentRef.current.scrollHeight + "px");
+    } else {
+      setHeight("0px");
+    }
+  }, [active, id, location]);
+
+  return (
+    <div className="footer-accordion">
+      <div
+        className={`footer-header ${active === id ? "active" : ""}`}
+        onClick={() => toggleSection(id)}
+      >
+        <h4>{title}</h4>
+        {active === id ? <FaMinus /> : <FaPlus />}
+      </div>
+
+      <div ref={contentRef} className="footer-content" style={{ height }}>
+        <div className="footer-inner">{children}</div>
+      </div>
+    </div>
+  );
+};
+
+export default function Footer() {
+  const [active, setActive] = useState(null);
+  const [showContact, setShowContact] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
+
+  const toggleSection = (section) => {
+    setActive(active === section ? null : section);
   };
 
   return (
-    <footer className="footer">
-      <div className="footer-section">
-        <button className="footer-toggle" onClick={() => toggle("contact")}>
-          Contact Info <span>{open === "contact" ? "−" : "+"}</span>
-        </button>
+    <footer id="footer" className="footer">
+      <div className="footer-container">
 
-        {open === "contact" && (
-          <div className="footer-content">
-            <p><strong>Phone:</strong> +91 98765 43210</p>
-            <p><strong>Email:</strong> sales@jjimpex.com</p>
-            <p><strong>Address:</strong> Mumbai, Maharashtra, India</p>
+        {/* CONTACT INFO */}
+        <AccordionSection
+          id="contact"
+          title="Contact Info"
+          active={active}
+          toggleSection={toggleSection}
+        >
+          <p><b>Phone:</b> +91-9876543210</p>
+          <p><b>Email:</b> sales@jjimpex.com</p>
+          <p>
+            <b>Address:</b> JJ Impex, B-74 Basement, Suraj Park,
+            Village Samaipur, Delhi
+          </p>
+
+          <div className="footer-map">
+            <iframe
+              title="JJImpex Location"
+              src="https://www.google.com/maps?q=Suraj%20Park%20Delhi&output=embed"
+              loading="lazy"
+              allowFullScreen
+            ></iframe>
           </div>
-        )}
-      </div>
+        </AccordionSection>
 
-      <div className="footer-section">
-        <button className="footer-toggle" onClick={() => toggle("about")}>
-          About Us <span>{open === "about" ? "−" : "+"}</span>
-        </button>
+        {/* STORE */}
+        <AccordionSection
+          id="store"
+          title="Our Store"
+          active={active}
+          toggleSection={toggleSection}
+        >
+          <ul>
+            <li
+              onClick={() =>
+                document
+                  .getElementById("about")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              Why Choose Us
+            </li>
+          </ul>
+        </AccordionSection>
 
-        {open === "about" && (
-          <div className="footer-content">
-            <p>
-              JJImpex is a premium food import & distribution company serving
-              restaurants, hotels, QSRs and cloud kitchens across India.
-            </p>
+        {/* LINKS */}
+        <AccordionSection
+          id="links"
+          title="Useful Links"
+          active={active}
+          toggleSection={toggleSection}
+        >
+          <ul>
+            <li>
+              <a href="/privacy-policy.pdf" target="_blank">
+                Privacy Policy
+              </a>
+            </li>
+
+            <li
+              onClick={() =>
+                alert("We deliver across India within 5-7 working days.")
+              }
+            >
+              Shipping Policy
+            </li>
+
+            <li>Terms & Conditions</li>
+          </ul>
+        </AccordionSection>
+
+        {/* FAQ */}
+        {/* FAQ */}
+<AccordionSection
+  id="faq"
+  title="FAQ"
+  active={active}
+  toggleSection={toggleSection}
+>
+  <Link
+    to="/faq"
+    onClick={() => {
+      setActive(null);        // close accordion
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }}
+    className="faq-link"
+  >
+    View Frequently Asked Questions →
+  </Link>
+</AccordionSection>
+
+        {/* ACTION BUTTONS */}
+        <div className="footer-actions">
+          <div className="footer-buttons">
+
+            <button
+              className="contact-btn"
+              onClick={() => setShowContact(true)}
+            >
+              Enquire
+            </button>
+
+            <button
+              className="feedback-btn"
+              onClick={() => setShowFeedback(true)}
+            >
+              Feedback
+            </button>
+
           </div>
-        )}
+
+          <a
+            href="https://wa.me/918826411312"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="whatsapp-btn"
+          >
+            <FaWhatsapp />
+            Message Us on WhatsApp
+          </a>
+        </div>
       </div>
-
-      <div className="footer-section">
-        <button className="footer-toggle" onClick={() => toggle("faq")}>
-          Frequently Asked Questions <span>{open === "faq" ? "−" : "+"}</span>
-        </button>
-
-        {open === "faq" && (
-          <div className="footer-content">
-            <p><strong>Do you sell B2C?</strong> No, we are B2B only.</p>
-            <p><strong>Minimum order?</strong> Depends on category.</p>
-            <p><strong>Delivery cities?</strong> PAN India.</p>
-          </div>
-        )}
-      </div>
-
-      <a
-        href="https://wa.me/919876543210"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="whatsapp-btn"
-      >
-        💬 Message us on WhatsApp
-      </a>
 
       <div className="footer-bottom">
-        © 2026 JJImpex — Premium Grocery & Food Imports
+        © 2026 JJImpex. All rights reserved.
       </div>
+
+      {showContact && <InquiryForm close={() => setShowContact(false)} />}
+      {showFeedback && <FeedbackForm close={() => setShowFeedback(false)} />}
     </footer>
   );
 }

@@ -5,6 +5,7 @@ import BrandProducts from "./pages/BrandProducts";
 import CategoryProducts from "../src/pages/CategoryProducts";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Faq from "./pages/Faq";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/category/:slug" element={<CategoryProducts />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/faq" element={<Faq />} />
       </Routes>
     </MainLayout>
   );

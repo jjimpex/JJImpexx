@@ -4,6 +4,8 @@ import connectDB from "./config/db.js";
 import brandRoutes from "./routes/brandRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+import inquireRoutes from "./routes/inquireRoutes.js";
+import feedbackRoutes from "./routes/feedbackRoutes.js";
 
 import adminBrandRoutes from "./routes/adminBrandRoutes.js";
 import adminCategoryRoutes from "./routes/adminCategoryRoutes.js";
@@ -22,6 +24,8 @@ const PORT = process.env.PORT || 5000;
 app.use("/api/brands", brandRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/inquire", inquireRoutes);
+app.use("/api/feedback", feedbackRoutes);
 
 // for admin panel
 app.use("/api/admin", adminAuthRoutes);
