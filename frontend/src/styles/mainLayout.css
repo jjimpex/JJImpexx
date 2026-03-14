@@ -9,7 +9,7 @@ body {
 
 /* MAIN WRAPPER */
 .main-layout {
-  min-height: 100dvh;      /* 👈 full mobile viewport */
+  min-height: 100dvh;      
   display: flex;
   flex-direction: column;
   background: #fff7f5;
@@ -17,7 +17,7 @@ body {
 
 /* PAGE AREA */
 .main-content {
-  flex: 1;                /* 👈 pushes footer to bottom */
+  flex: 1;   
   display: flex;
   flex-direction: column;
 }

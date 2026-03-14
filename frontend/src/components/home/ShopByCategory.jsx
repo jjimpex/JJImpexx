@@ -33,33 +33,64 @@ export default function ShopByCategory() {
   }
 
   return (
+    // <section className="shop-category">
+
+    //   <h3>Shop By Category</h3>
+
+    //   <div className="category-grid">
+
+    //     {categories.map(cat => (
+
+    //       <Link
+    //         to={`/category/${cat.slug}`}
+    //         className="category-card"
+    //         key={cat._id}
+    //       >
+
+    //         <div
+    //           className="cat-icon"
+    //           style={{ backgroundImage: `url(${cat.icon})` }}
+    //         />
+
+    //         <span>{cat.name}</span>
+
+    //       </Link>
+
+    //     ))}
+
+    //   </div>
+
+    // </section>
+
     <section className="shop-category">
 
-      <h3>Shop By Category</h3>
+  <div className="category-header">
+    <h3>Shop By Category</h3>
+  </div>
 
-      <div className="category-grid">
+  <div className="category-grid">
 
-        {categories.map(cat => (
+    {categories.map(cat => (
 
-          <Link
-            to={`/category/${cat.slug}`}
-            className="category-card"
-            key={cat._id}
-          >
+      <Link
+        to={`/category/${cat.slug}`}
+        className="category-card"
+        key={cat._id}
+      >
 
-            <div
-              className="cat-icon"
-              style={{ backgroundImage: `url(${cat.icon})` }}
-            />
+        <div
+          className="cat-icon"
+          style={{ backgroundImage: `url(${cat.icon})` }}
+        />
 
-            <span>{cat.name}</span>
+        <span>{cat.name}</span>
 
-          </Link>
+      </Link>
 
-        ))}
+    ))}
 
-      </div>
+  </div>
 
-    </section>
+</section>
   );
 }
