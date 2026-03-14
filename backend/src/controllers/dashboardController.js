@@ -10,9 +10,11 @@ export const getDashboardStats = async (req, res) => {
 
   try {
 
-    const products = await Product.countDocuments({ isActive: true });
-    const brands = await Brand.countDocuments({ isActive: true });
-    const categories = await Category.countDocuments({ isActive: true });
+    const [products, brands, categories] = await Promise.all([
+      Product.countDocuments({ isActive: true }),
+      Brand.countDocuments({ isActive: true }),
+      Category.countDocuments({ isActive: true })
+    ]);
 
     res.json({
       products,
