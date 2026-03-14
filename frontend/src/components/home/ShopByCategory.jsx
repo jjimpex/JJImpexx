@@ -35,7 +35,7 @@ export default function ShopByCategory() {
   return (
     <section className="shop-category">
 
-      <h3>Shop by category</h3>
+      <h3>Shop By Category</h3>
 
       <div className="category-grid">
 
