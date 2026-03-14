@@ -7,10 +7,9 @@ import Loader from "../components/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-const ITEMS_PER_PAGE = 2;
+const ITEMS_PER_PAGE = 15;
 
 export default function Category() {
-
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
   const [icon, setIcon] = useState(null);
@@ -26,29 +25,19 @@ export default function Category() {
   /* ---------------- FETCH ---------------- */
 
   const fetchCategories = async () => {
-
     try {
-
       setLoading(true);
 
       const res = await api.get("/admin/categories");
 
-      const sorted = res.data.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      );
+      const sorted = res.data.sort((a, b) => a.name.localeCompare(b.name));
 
       setCategories(sorted);
-
     } catch {
-
       toast.error("Failed to fetch categories");
-
     } finally {
-
       setLoading(false);
-
     }
-
   };
 
   useEffect(() => {
@@ -58,7 +47,7 @@ export default function Category() {
   /* ---------------- SEARCH ---------------- */
 
   const filtered = categories.filter((c) =>
-    c.name.toLowerCase().includes(search.toLowerCase())
+    c.name.toLowerCase().includes(search.toLowerCase()),
   );
 
   /* ---------------- PAGINATION ---------------- */
@@ -67,56 +56,47 @@ export default function Category() {
 
   const paginated = filtered.slice(
     (page - 1) * ITEMS_PER_PAGE,
-    page * ITEMS_PER_PAGE
+    page * ITEMS_PER_PAGE,
   );
 
   /* ---------------- MODALS ---------------- */
 
   const openCreate = () => {
-
     setEditingCategory({});
     setName("");
     setIcon(null);
     setPreview(null);
-
   };
 
   const openEdit = (cat) => {
-
     setEditingCategory(cat);
     setName(cat.name);
     setIcon(null);
     setPreview(cat.icon);
-
   };
 
   const closeModal = () => {
-
     setEditingCategory(null);
     setDeleteId(null);
     setName("");
     setIcon(null);
     setPreview(null);
-
   };
 
   /* ---------------- FILE PREVIEW ---------------- */
 
   const handleFileChange = (e) => {
-
     const file = e.target.files[0];
 
     if (!file) return;
 
     setIcon(file);
     setPreview(URL.createObjectURL(file));
-
   };
 
   /* ---------------- SAVE ---------------- */
 
   const submit = async () => {
-
     if (!name.trim()) {
       toast.error("Category name required");
       return;
@@ -131,61 +111,44 @@ export default function Category() {
     }
 
     try {
-
       setLoading(true);
 
       if (editingCategory?._id) {
-
         await api.put(`/admin/categories/${editingCategory._id}`, formData, {
-          headers: { "Content-Type": "multipart/form-data" }
+          headers: { "Content-Type": "multipart/form-data" },
         });
 
         toast.success("Category updated");
-
       } else {
-
         await api.post("/admin/categories", formData, {
-          headers: { "Content-Type": "multipart/form-data" }
+          headers: { "Content-Type": "multipart/form-data" },
         });
 
         toast.success("Category created");
-
       }
 
       closeModal();
       fetchCategories();
-
     } catch {
-
       toast.error("Upload failed");
-
     } finally {
-
       setLoading(false);
-
     }
-
   };
 
   /* ---------------- DELETE ---------------- */
 
   const confirmDelete = async () => {
-
     try {
-
       await api.delete(`/admin/categories/${deleteId}`);
 
       toast.success("Category deleted");
 
       setDeleteId(null);
       fetchCategories();
-
     } catch {
-
       toast.error("Delete failed");
-
     }
-
   };
 
   /* ---------------- LOADER ---------------- */
@@ -195,15 +158,12 @@ export default function Category() {
   }
 
   return (
-
     <div className="page">
-
       <ToastContainer position="top-right" autoClose={2500} />
 
       <h2>Categories</h2>
 
       <div className="brand-toolbar">
-
         <input
           className="search-box"
           placeholder="Search categories..."
@@ -214,17 +174,12 @@ export default function Category() {
           }}
         />
 
-        <button
-          className="primary add-btn"
-          onClick={openCreate}
-        >
+        <button className="primary add-btn" onClick={openCreate}>
           + Add Category
         </button>
-
       </div>
 
       <div className="brand-list">
-
         <div className="brand-header">
           <span>S.No</span>
           <span>Category</span>
@@ -233,104 +188,51 @@ export default function Category() {
           <span>Delete</span>
         </div>
 
-        {/* {paginated.map((c, index) => (
-
-          <div className="brand-card" key={c._id}>
-
-            <div className="brand-serial">
-              {(page - 1) * ITEMS_PER_PAGE + index + 1}
-            </div>
-
-            <div className="brand-name">
-              {c.name}
-            </div>
-
-            <div className="brand-logo-box">
-              <img src={c.icon} alt={c.name} />
-            </div>
-
-            <button
-              className="icon-btn edit-btn"
-              onClick={() => openEdit(c)}
-            >
-              <FaEdit />
-            </button>
-
-            <button
-              className="icon-btn delete-btn"
-              onClick={() => setDeleteId(c._id)}
-            >
-              <FaTrash />
-            </button>
-
-          </div>
-
-        ))} */}
-
         {paginated.length === 0 ? (
+          <div
+            style={{
+              textAlign: "center",
+              padding: "25px",
+              color: "#777",
+              fontSize: "15px",
+              gridColumn: "1 / -1",
+            }}
+          >
+            No records found...
+          </div>
+        ) : (
+          paginated.map((c, index) => (
+            <div className="brand-card" key={c._id}>
+              <div className="brand-serial">
+                {(page - 1) * ITEMS_PER_PAGE + index + 1}
+              </div>
 
-  <div
-    style={{
-      textAlign: "center",
-      padding: "25px",
-      color: "#777",
-      fontSize: "15px",
-      gridColumn: "1 / -1"
-    }}
-  >
-    No records found...
-  </div>
+              <div className="brand-name">{c.name}</div>
 
-) : (
+              <div className="brand-logo-box">
+                <img src={c.icon} alt={c.name} />
+              </div>
 
-  paginated.map((c, index) => (
+              <button className="icon-btn edit-btn" onClick={() => openEdit(c)}>
+                <FaEdit />
+              </button>
 
-    <div className="brand-card" key={c._id}>
-
-      <div className="brand-serial">
-        {(page - 1) * ITEMS_PER_PAGE + index + 1}
-      </div>
-
-      <div className="brand-name">
-        {c.name}
-      </div>
-
-      <div className="brand-logo-box">
-        <img src={c.icon} alt={c.name} />
-      </div>
-
-      <button
-        className="icon-btn edit-btn"
-        onClick={() => openEdit(c)}
-      >
-        <FaEdit />
-      </button>
-
-      <button
-        className="icon-btn delete-btn"
-        onClick={() => setDeleteId(c._id)}
-      >
-        <FaTrash />
-      </button>
-
-    </div>
-
-  ))
-
-)}
-
+              <button
+                className="icon-btn delete-btn"
+                onClick={() => setDeleteId(c._id)}
+              >
+                <FaTrash />
+              </button>
+            </div>
+          ))
+        )}
       </div>
 
       {/* PAGINATION */}
 
       {totalPages > 1 && (
-
         <div className="pagination">
-
-          <button
-            disabled={page === 1}
-            onClick={() => setPage(page - 1)}
-          >
+          <button disabled={page === 1} onClick={() => setPage(page - 1)}>
             Prev
           </button>
 
@@ -344,22 +246,15 @@ export default function Category() {
           >
             Next
           </button>
-
         </div>
-
       )}
 
       {/* CREATE / EDIT MODAL */}
 
       {editingCategory !== null && (
-
         <div className="modal-overlay">
-
           <div className="modal">
-
-            <h3>
-              {editingCategory?._id ? "Edit Category" : "Add Category"}
-            </h3>
+            <h3>{editingCategory?._id ? "Edit Category" : "Add Category"}</h3>
 
             <input
               placeholder="Category name"
@@ -367,11 +262,7 @@ export default function Category() {
               onChange={(e) => setName(e.target.value)}
             />
 
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-            />
+            <input type="file" accept="image/*" onChange={handleFileChange} />
 
             {preview && (
               <img
@@ -382,48 +273,29 @@ export default function Category() {
             )}
 
             <div className="modal-actions">
-
-              <button
-                className="primary"
-                disabled={loading}
-                onClick={submit}
-              >
+              <button className="primary" disabled={loading} onClick={submit}>
                 {loading ? "Saving..." : "Save"}
               </button>
 
-              <button
-                className="secondary dark"
-                onClick={closeModal}
-              >
+              <button className="secondary dark" onClick={closeModal}>
                 Cancel
               </button>
-
             </div>
-
           </div>
-
         </div>
-
       )}
 
       {/* DELETE CONFIRMATION */}
 
       {deleteId && (
-
         <div className="modal-overlay">
-
           <div className="modal-box">
-
             <h3>Delete Category?</h3>
 
             <p>This action cannot be undone.</p>
 
             <div className="modal-actions">
-
-              <button
-                className="danger"
-                onClick={confirmDelete}
-              >
+              <button className="danger" onClick={confirmDelete}>
                 Delete
               </button>
 
@@ -433,17 +305,10 @@ export default function Category() {
               >
                 Cancel
               </button>
-
             </div>
-
           </div>
-
         </div>
-
       )}
-
     </div>
-
   );
-
 }

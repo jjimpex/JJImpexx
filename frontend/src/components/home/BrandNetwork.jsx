@@ -17,7 +17,7 @@ export default function BrandNetwork() {
   }, []);
 
   return (
-    <section className="brand-network">
+    <section id="brands" className="brand-network">
       <h2>Our Global Brand Network</h2>
 
       {loading ? (

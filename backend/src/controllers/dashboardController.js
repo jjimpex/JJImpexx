@@ -10,9 +10,9 @@ export const getDashboardStats = async (req, res) => {
 
   try {
 
-    const products = await Product.countDocuments();
-    const brands = await Brand.countDocuments();
-    const categories = await Category.countDocuments();
+    const products = await Product.countDocuments({ isActive: true });
+    const brands = await Brand.countDocuments({ isActive: true });
+    const categories = await Category.countDocuments({ isActive: true });
 
     res.json({
       products,

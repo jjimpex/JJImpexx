@@ -81,7 +81,7 @@ h2{
 .brand-list{
   background:white;
   border-radius:8px;
-  overflow-x:auto;   /* allow horizontal scroll instead of collapsing */
+  overflow-x:auto; 
   box-shadow:0 2px 8px rgba(0,0,0,0.05);
 }
 
@@ -94,7 +94,7 @@ h2{
   font-weight:600;
   background:#b6b1b1;
   border-bottom:2px solid #eee;
-  min-width:500px; /* prevents collapsing */
+  min-width:500px;
 }
 
 /* ROW */

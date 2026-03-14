@@ -5,9 +5,25 @@
   box-sizing: border-box;
 }
 
+:root{
+  --primary:#151B54;
+  --primary-dark:#0e1238;
+  --primary-light:#1e2570;
+  --accent:#ffffff;
+  --accent-soft:#dfe3ff;
+}
+
+/* BODY */
+body{
+  font-family: Inter, system-ui, -apple-system, Arial, sans-serif;
+  background:#f6f7ff;
+  color:#1f1f1f;
+}
+
 html,
 body {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 * {
