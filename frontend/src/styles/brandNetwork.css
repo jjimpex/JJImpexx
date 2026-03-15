@@ -4,16 +4,16 @@
   background: #ffffff;
   padding: 48px 0 56px;
   overflow: hidden;
-    scroll-margin-top:80px;
-
+  scroll-margin-top: 80px;
 }
 
 .brand-network h2 {
-  font-size: 22px;
+  font-size: clamp(22px, 3vw, 30px);
   font-weight: 700;
   text-align: center;
   margin-bottom: 28px;
-  color: #151B54;
+  color: #151b54;
+  text-transform: uppercase;
 }
 
 /* ================= LOADER ================= */
@@ -114,21 +114,17 @@
   height: 120px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid #151B54;
+  border: 2px solid #151b54;
   background: #fff;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-/* .brand-circle:hover {
+.brand-circle:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.1);
-  border: 3.5px solid #07189e;
-} */
-
-.brand-circle:hover{
-  transform:translateY(-4px) scale(1.05);
-  box-shadow:0 14px 36px rgba(21,27,84,.18);
+  box-shadow: 0 14px 36px rgba(21, 27, 84, 0.18);
   border: 3.5px solid #07189e;
 }
 
@@ -148,7 +144,7 @@
   margin-top: 10px;
   font-size: 13px;
   font-weight: 500;
-  color: #151B54;
+  color: #151b54;
   text-align: center;
   max-width: 120px;
 }
@@ -181,4 +177,10 @@
   .marquee-group {
     gap: 24px;
   }
+
+  .brand-network h2 {
+    font-size: 22px;
+  }
 }
+
+

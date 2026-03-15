@@ -1,6 +1,6 @@
 /* ================= SHOP BY CATEGORY ================= */
-main{
-  background:#ffffff;
+main {
+  background: #ffffff;
 }
 
 .shop-category {
@@ -10,11 +10,11 @@ main{
   max-width: 1700px;
   border-radius: 32px;
   overflow-x: hidden;
-} 
+}
 
 /* ================= HEADING ================= */
 .shop-category h3 {
-  font-size: 16px;
+  font-size: 25px;
   font-weight: 700;
   color: #151b54;
   text-transform: uppercase;
@@ -32,7 +32,7 @@ main{
   flex: 1;
   height: 1px;
   background: #cfd3ff;
-} 
+}
 
 /* ================= GRID ================= */
 .category-grid {
@@ -40,7 +40,7 @@ main{
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   width: 100%;
-} 
+}
 
 /* ================= CARD ================= */
 .category-card {
@@ -68,7 +68,7 @@ main{
   transform: translateY(-4px);
   box-shadow: 0 14px 34px rgba(21, 27, 84, 0.15);
   border-color: #151b54;
-} 
+}
 
 /* ================= ICON ================= */
 .cat-icon {
@@ -78,7 +78,7 @@ main{
   background-position: center;
   background-size: contain;
   flex-shrink: 0;
-} 
+}
 
 /* ================= TEXT ================= */
 .category-card span {
@@ -89,7 +89,7 @@ main{
   max-width: 100%;
   word-break: break-word;
   hyphens: auto;
-} 
+}
 
 /* ================= TABLET ================= */
 @media (min-width: 600px) {
@@ -106,7 +106,23 @@ main{
   .category-card span {
     font-size: 15px;
   }
-} 
+  .shop-category h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #151b54;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width: 350px) {
+  
+  .shop-category h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #151b54;
+    text-transform: uppercase;
+  }
+}
 
 /* ================= DESKTOP ================= */
 @media (min-width: 992px) {
