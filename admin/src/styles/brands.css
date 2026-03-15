@@ -88,7 +88,8 @@ h2{
   grid-template-columns:60px minmax(160px,1fr) 120px 80px 80px;
   padding:12px;
   font-weight:600;
-  background:#b6b1b1;
+  background:#151B54;
+  color: #fff;
   border-bottom:2px solid #eee;
   min-width:500px;
 }

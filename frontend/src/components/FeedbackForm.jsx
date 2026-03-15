@@ -152,7 +152,7 @@ const FeedbackForm = ({ close }) => {
                 display: "block",
                 textAlign: "left",
                 fontWeight: "600",
-                color: "#e53935",
+                color: "#151B54",
                 marginBottom: "4px",
               }}
             >

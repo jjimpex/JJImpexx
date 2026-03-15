@@ -260,7 +260,7 @@ export default function Products() {
               style={{
                 textAlign: "center",
                 padding: "25px",
-                color: "#777",
+                color: "#151B54",
                 fontSize: "15px",
                 gridColumn: "1 / -1",
               }}

@@ -57,7 +57,8 @@
 .product-header{
   display:grid;
   grid-template-columns:2fr 1.5fr 1.5fr 2fr 80px 80px;
-  background:#b6b1b1;
+  background:#151B54;
+  color: #fff;
   padding:12px;
   font-weight:600;
   font-size:14px;
