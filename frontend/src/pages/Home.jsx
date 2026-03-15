@@ -9,8 +9,11 @@ export default function Home() {
     <>
       <Hero />
       <BrandNetwork />
+      <div className="section-divider"></div>
       <ShopByCategory />
+      <div className="section-divider"></div>
       <WhyChooseUs />
+      <div className="section-divider"></div>
       <Values />
     </>
   );

@@ -33,43 +33,6 @@ export default function WhyChooseUs() {
           </div>
         </div>
       </section>
-
-<div className="section-divider"></div>
-
-      {/* IMPORT PROCESS */}
-      <section className="process">
-  <h2 className="section-title">Our Import Process</h2>
-
-  <div className="process-flow">
-
-    <div className="process-step">
-      <div className="step-circle">1</div>
-      <p>Global Supplier Selection</p>
-    </div>
-
-    <div className="process-arrow">→</div>
-
-    <div className="process-step">
-      <div className="step-circle">2</div>
-      <p>Quality & Compliance Check</p>
-    </div>
-
-    <div className="process-arrow">→</div>
-
-    <div className="process-step">
-      <div className="step-circle">3</div>
-      <p>Temperature Controlled Shipping</p>
-    </div>
-
-    <div className="process-arrow">→</div>
-
-    <div className="process-step">
-      <div className="step-circle">4</div>
-      <p>Distribution Across India</p>
-    </div>
-
-  </div>
-</section>
     </>
   );
 }

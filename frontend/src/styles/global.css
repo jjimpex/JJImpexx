@@ -53,3 +53,26 @@ body {
   max-width: 1200px;
   margin: auto;
 }
+
+/* DIVIDER BETWEEN SECTIONS */
+.section-divider{
+  width:100%;
+  padding:10px 0;
+  background:#ffffff;
+  display:flex;
+  justify-content:center;
+}
+
+.section-divider::after{
+  content:"";
+  width:500px;
+  height:3px;
+  background:linear-gradient(90deg,#151B54,#8aa0d6);
+  border-radius:3px;
+}
+
+@media (max-width: 768px) {
+  .section-divider::after{
+    width:300px;
+  }
+}

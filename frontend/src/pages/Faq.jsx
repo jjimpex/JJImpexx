@@ -78,30 +78,30 @@ const Faq = () => {
                 {item.question}
 
                 <motion.span
-  className="faq-icon"
-  animate={{ rotate: openIndex === index ? 180 : 0 }}
-  transition={{
-    duration: 0.35,
-    ease: [0.4, 0, 0.2, 1]  // smoother easing
-  }}
->
-  <FaChevronDown />
-</motion.span>
+                  className="faq-icon"
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{
+                    duration: 0.35,
+                    ease: [0.4, 0, 0.2, 1], // smoother easing
+                  }}
+                >
+                  <FaChevronDown />
+                </motion.span>
               </div>
               <AnimatePresence initial={false}>
-  {openIndex === index && (
-    <motion.div
-      className="faq-answer"
-      initial={{ opacity: 0, scaleY: 0 }}
-      animate={{ opacity: 1, scaleY: 1 }}
-      exit={{ opacity: 0, scaleY: 0 }}
-      transition={{ duration: 0.25, ease: "easeInOut" }}
-      style={{ transformOrigin: "top" }}
-    >
-      {item.answer}
-    </motion.div>
-  )}
-</AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    className="faq-answer"
+                    initial={{ opacity: 0, scaleY: 0 }}
+                    animate={{ opacity: 1, scaleY: 1 }}
+                    exit={{ opacity: 0, scaleY: 0 }}
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                    style={{ transformOrigin: "top" }}
+                  >
+                    {item.answer}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>

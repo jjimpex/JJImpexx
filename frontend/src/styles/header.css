@@ -4,19 +4,6 @@
 }
 
 /* ================= NAVBAR ================= */
-/* .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #ffffff;
-  border-bottom: 1px solid #eee;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 14px 16px;
-} */
 
 .navbar{
   position:sticky;
@@ -24,21 +11,14 @@
   z-index:100;
   background:var(--primary);
   border-bottom:1px solid rgba(255,255,255,0.08);
-
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:14px 16px;
+  height: 75px;
 }
 
 /* LOGO */
-/* .logo {
-  font-size: 20px;
-  font-weight: 800;
-  color: #e53935;
-  text-decoration: none;
-} */
-
 .logo{
   font-size:20px;
   font-weight:800;
@@ -152,6 +132,8 @@
   transform:translateX(100%);
   transition:transform .35s ease;
 
+  overflow-y:auto;   /* ✅ allows scroll if needed */
+
   z-index:999;
 }
 
@@ -222,7 +204,7 @@
 /* CTA BUTTON */
 /* ================= WHATSAPP CTA (FINAL) ================= */
 .menu-cta {
-  margin-top: auto;
+  margin-top: 200px;
 
   display: flex !important;
   align-items: center;
