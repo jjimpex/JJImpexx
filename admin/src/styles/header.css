@@ -8,14 +8,12 @@
   position:sticky;
   top:0;
   z-index:1000;
-
-  background:#ffffff;
+  height: 75px;
+  background:#151B54;
   border-bottom:1px solid #eee;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   padding:14px 18px;
 }
 
@@ -28,7 +26,7 @@
 .logo{
   font-size:20px;
   font-weight:800;
-  color:#e53935;
+  color:#ffffff;
   cursor:pointer;
 }
 
@@ -42,7 +40,7 @@
 
 .nav-links a{
   text-decoration:none;
-  color:#333;
+  color:#ffffff;
   font-weight:500;
   position:relative;
   padding-bottom:4px;
@@ -55,7 +53,7 @@
   bottom:0;
   width:0;
   height:2px;
-  background:#e53935;
+  background:#151B54;
   transition:0.25s;
 }
 
@@ -64,7 +62,7 @@
 }
 
 .nav-links a.active{
-  color:#e53935;
+  color:#151B54;
 }
 
 .nav-links a.active::after{
@@ -73,13 +71,13 @@
 
 .mobile-menu a.active{
   background:#fff1f1;
-  color:#e53935;
+  color:#151B54;
 }
 
 /* LOGIN BUTTON */
 
 .login-btn{
-  background:#e53935;
+  background:#151B54;
   border:none;
   color:white;
   padding:8px 16px;
@@ -99,12 +97,13 @@
   display:flex;
   flex-direction:column;
   justify-content:space-between;
+  z-index:1200;
 }
 
 .menu-btn span{
   height:3px;
   width:100%;
-  background:#333;
+  background:#d9d5d5;
   border-radius:3px;
   transition:0.3s;
 }
@@ -150,7 +149,7 @@
   max-width:320px;
   height:100vh;
 
-  background:white;
+  background:#151B54;
 
   display:flex;
   flex-direction:column;
@@ -172,19 +171,20 @@
   text-decoration:none;
   font-size:18px;
   font-weight:600;
-  color:#333;
+  color:#ffffff;
   padding:10px 12px;
   border-radius:8px;
 }
 
 .mobile-menu a:hover{
-  background:#f5f5f5;
+  background:#f3eeee;
+  color:#151B54;
 }
 
 /* MOBILE LOGIN */
 
 .mobile-login-btn{
-  background:#e53935;
+  background:#151B54;
   border:none;
   color:white;
   padding:12px;
@@ -229,7 +229,7 @@
 }
 
 .logout-btn{
-  background:#e53935;
+  background: rgb(236, 60, 60);
   border:none;
   padding:7px 14px;
   color:white;
@@ -238,7 +238,7 @@
 }
 
 .mobile-logout-btn{
-  background:#e53935;
+  background:rgb(236, 60, 60);
   border:none;
   padding:12px;
   color:white;

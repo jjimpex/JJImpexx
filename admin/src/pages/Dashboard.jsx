@@ -113,7 +113,7 @@ export default function Dashboard() {
                 <tr key={p._id}>
                   <td className="product-name">
                     {p.images?.length > 0 && (
-                      <img src={p.images[0]} alt="" className="product-thumb" />
+                      <img src={p.images[0].url} alt="" className="product-thumb" />
                     )}
 
                     {p.name}

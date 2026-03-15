@@ -23,12 +23,12 @@
   display: flex;
   align-items: center;
   gap: 18px;
-  background: #ffdeb5;
+  background: rgb(244, 244, 246);
   padding: 26px;
   border-radius: 14px;
-  border: 2px solid #ffa575;
+  border: 2px solid #151B54;
   text-decoration: none;
-  color: #222;
+  color: #151B54;
   transition: all 0.25s ease;
   position: relative;
 }
@@ -36,7 +36,7 @@
 /* ICON */
 .stats-icon {
   font-size: 26px;
-  color: #ea580c;
+  color: #151B54;
   width: 48px;
   height: 48px;
   display: flex;
@@ -58,14 +58,14 @@
 .stats-card p {
   margin: 0;
   font-size: 14px;
-  color: #555;
+  color: #151B54;
 }
 
 /* HOVER */
 
 .stats-card:hover {
   transform: translateY(-5px);
-  border-color: #ea580c;
+  border-color: #151B54;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
 }
 
@@ -74,10 +74,10 @@
 /* ===================== */
 
 .recent-products {
-  background: #ffdeb5;
-  color: #ea580c;
+  background: rgb(244, 244, 246);
+  color: #151B54;
   border-radius: 14px;
-  border: 2px solid #ffa575;
+  border: 2px solid #151B54;
   padding: 26px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   transition: all 0.25s ease;
@@ -86,7 +86,7 @@
 
 .recent-products:hover {
   transform: translateY(-5px);
-  border-color: #ea580c;
+  border-color: #3b4fe5;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
 }
 
@@ -108,7 +108,7 @@
 .view-all {
   text-decoration: none;
   font-size: 14px;
-  color: #ea580c;
+  color: #151B54;
   font-weight: 500;
 }
 

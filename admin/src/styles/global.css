@@ -12,7 +12,7 @@ body,
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background: #f9fafb;
+  background: #d7ebff;
   color: #111827;
 }
 
@@ -25,7 +25,7 @@ body {
 
 /* MAIN CONTENT */
 .main-container {
-  background: #fff7ed;
+  background: rgb(224, 224, 255);
 
   flex: 1;
   padding: 20px;
